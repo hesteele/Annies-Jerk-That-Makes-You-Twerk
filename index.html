@@ -8,26 +8,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --forest: #0b3d2e;
       --forest-2: #0f5138;
-      --teal: #12b5a5;
+      --teal: #14b8a6;
       --yellow: #facc15;
-      --orange: #ff7b22;
+      --orange: #fb923c;
+      --red: #ef4444;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Montserrat', sans-serif;
       color: white;
       background:
-        radial-gradient(circle at 10% 20%, rgba(250, 204, 21, 0.14), transparent 20%),
-        radial-gradient(circle at 85% 15%, rgba(18, 181, 165, 0.16), transparent 18%),
-        radial-gradient(circle at 80% 70%, rgba(255, 123, 34, 0.15), transparent 24%),
-        radial-gradient(circle at 25% 80%, rgba(255, 255, 255, 0.05), transparent 16%),
-        linear-gradient(135deg, #05291e 0%, #0b3d2e 30%, #0f5138 62%, #083827 100%);
+        radial-gradient(circle at 10% 15%, rgba(250, 204, 21, 0.18), transparent 18%),
+        radial-gradient(circle at 88% 18%, rgba(20, 184, 166, 0.18), transparent 18%),
+        radial-gradient(circle at 82% 72%, rgba(251, 146, 60, 0.14), transparent 25%),
+        radial-gradient(circle at 18% 82%, rgba(255,255,255,0.05), transparent 18%),
+        linear-gradient(135deg, #041f17 0%, #0a3a2b 35%, #0e4b36 68%, #072a1f 100%);
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -38,10 +42,10 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 90%);
       z-index: 0;
     }
 
@@ -51,16 +55,20 @@
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.26);
+    }
+
+    .section-title {
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .glow-button {
-      box-shadow: 0 0 0 rgba(250, 204, 21, 0.6);
       animation: pulseGlow 1.8s infinite;
+      box-shadow: 0 0 0 rgba(250, 204, 21, 0.5);
     }
 
     @keyframes pulseGlow {
@@ -69,14 +77,53 @@
       100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
     }
 
-    .section-title {
-      text-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    .hero-panel {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.35)),
+        radial-gradient(circle at top right, rgba(20,184,166,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(250,204,21,0.20), transparent 24%);
     }
 
-    .price-pill {
-      background: rgba(250, 204, 21, 0.14);
-      border: 1px solid rgba(250, 204, 21, 0.35);
-      color: #fff5b8;
+    .hero-art {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(250,204,21,0.28), transparent 18%),
+        radial-gradient(circle at 78% 22%, rgba(20,184,166,0.24), transparent 18%),
+        radial-gradient(circle at 68% 75%, rgba(251,146,60,0.22), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+    }
+
+    .hero-art::before,
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(2px);
+      opacity: 0.9;
+    }
+
+    .hero-art::before {
+      width: 220px;
+      height: 220px;
+      top: -40px;
+      right: -20px;
+      background: radial-gradient(circle, rgba(250,204,21,0.35), transparent 65%);
+    }
+
+    .hero-art::after {
+      width: 250px;
+      height: 250px;
+      bottom: -60px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(20,184,166,0.32), transparent 65%);
+    }
+
+    .food-card {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.22);
     }
 
     .menu-category {
@@ -85,42 +132,55 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.2);
     }
 
+    .menu-item {
+      transition: 0.2s ease;
+    }
+
     .menu-item:hover {
-      transform: translateY(-1px);
-      border-color: rgba(250,204,21,0.4);
-      background: rgba(255,255,255,0.09);
+      transform: translateY(-2px);
+      border-color: rgba(250,204,21,0.45);
+      background: rgba(255,255,255,0.10);
     }
 
     .badge-choice {
-      background: linear-gradient(90deg, var(--yellow), #ffd95a);
+      background: linear-gradient(90deg, var(--yellow), #ffe16b);
       color: #111827;
       font-weight: 800;
     }
 
-    .hero-overlay {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.38)),
-        radial-gradient(circle at top right, rgba(18,181,165,0.22), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(250,204,21,0.18), transparent 24%);
+    .price-pill {
+      background: rgba(250,204,21,0.14);
+      border: 1px solid rgba(250,204,21,0.35);
+      color: #fff3b0;
     }
 
     .review-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
       border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .floating-leaf {
-      position: absolute;
-      opacity: 0.12;
-      font-size: 6rem;
-      filter: blur(0.4px);
-      pointer-events: none;
+    .status-open {
+      background: #16a34a;
+      color: white;
     }
 
-    .status-open { background: #16a34a; color: white; }
-    .status-closed { background: #dc2626; color: white; }
+    .status-closed {
+      background: #dc2626;
+      color: white;
+    }
 
-    .cart-scroll::-webkit-scrollbar { width: 8px; }
+    .floating {
+      position: absolute;
+      opacity: 0.12;
+      pointer-events: none;
+      font-size: 5rem;
+      filter: blur(0.3px);
+    }
+
+    .cart-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
     .cart-scroll::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.18);
       border-radius: 999px;
@@ -129,13 +189,15 @@
 </head>
 <body>
   <div class="relative z-10">
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#062419]/85 backdrop-blur-xl">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#062419]/85 backdrop-blur-xl">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="#home" class="flex items-center gap-3">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xl font-black">AJ</div>
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xl font-black">
+            AJ
+          </div>
           <div>
             <p class="brand-font text-lg leading-none text-yellow-300">Annies Jerk</p>
-            <p class="text-xs uppercase tracking-[0.22em] text-white/70">That Makes You Twerk</p>
+            <p class="text-xs uppercase tracking-[0.24em] text-white/70">That Makes You Twerk</p>
           </div>
         </a>
 
@@ -148,48 +210,113 @@
         </nav>
 
         <div class="flex items-center gap-3">
-          <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-yellow-300 hover:text-yellow-300">TikTok</a>
-          <a href="#checkout" class="glow-button rounded-full bg-yellow-400 px-4 py-2 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">Order Collection</a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-yellow-300 hover:text-yellow-300">
+            TikTok
+          </a>
+          <a href="#checkout" class="glow-button rounded-full bg-yellow-400 px-4 py-2 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">
+            Order Collection
+          </a>
         </div>
       </div>
     </header>
 
     <main>
       <section id="home" class="relative isolate overflow-hidden px-4 pb-14 pt-8 sm:px-6 lg:px-8 lg:pb-20 lg:pt-14">
-        <span class="floating-leaf left-[4%] top-16">🍃</span>
-        <span class="floating-leaf right-[7%] top-36">🌶️</span>
-        <span class="floating-leaf bottom-8 right-[24%]">🥭</span>
+        <span class="floating left-[5%] top-12">🍃</span>
+        <span class="floating right-[8%] top-28">🌶️</span>
+        <span class="floating bottom-12 right-[24%]">🥭</span>
 
-        <div class="hero-overlay mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-white/10 p-6 shadow-2xl shadow-black/30 md:grid-cols-[1.15fr_0.85fr] md:p-10 lg:p-14">
+        <div class="hero-panel mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-white/10 p-6 shadow-2xl shadow-black/30 md:grid-cols-[1.05fr_0.95fr] md:p-10 lg:p-14">
           <div class="flex flex-col justify-center">
-            <p class="mb-4 inline-flex w-fit items-center rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-yellow-200">Best Jerk Chicken Bletchley • Seafood Boil Milton Keynes</p>
-            <h1 class="section-title max-w-3xl text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">Food So Good, It Makes You Twerk.</h1>
-            <p class="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">Real Caribbean flavors. Real Bletchley soul. Big plates, bold seasoning, and the kind of hospitality that feels like catching up with a friend.</p>
+            <p class="mb-4 inline-flex w-fit items-center rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-yellow-200">
+              Best Jerk Chicken Bletchley • Seafood Boil Milton Keynes
+            </p>
+
+            <h1 class="section-title max-w-3xl text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
+              Food So Good, It Makes You Twerk.
+            </h1>
+
+            <p class="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+              Real Caribbean flavors. Real Bletchley soul. Big plates, bold seasoning, and the kind of hospitality that feels like catching up with a friend.
+            </p>
 
             <div class="mt-6 flex flex-wrap gap-3">
-              <span id="kitchenStatus" class="rounded-full px-5 py-3 text-sm font-extrabold">Checking kitchen status...</span>
-              <span class="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white/90">Inside Brunel Shopping Centre</span>
+              <span id="kitchenStatus" class="rounded-full px-5 py-3 text-sm font-extrabold">
+                Checking kitchen status...
+              </span>
+              <span class="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white/90">
+                Inside Brunel Shopping Centre
+              </span>
             </div>
 
             <div class="mt-8 flex flex-wrap gap-4">
-              <a href="#menu" class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">See Menu</a>
-              <a href="#reviews" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-yellow-300 hover:text-yellow-300">See Reviews</a>
-              <a href="tel:07727154127" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-teal-300 hover:text-teal-200">Call Now</a>
+              <a href="#menu" class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">
+                See Menu
+              </a>
+              <a href="#reviews" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-yellow-300 hover:text-yellow-300">
+                See Reviews
+              </a>
+              <a href="tel:07727154127" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-teal-300 hover:text-teal-200">
+                Call Now
+              </a>
             </div>
           </div>
 
-          <div class="glass rounded-[1.75rem] p-4 sm:p-5">
-            <div class="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/15">
-              <img src="menu-poster.png" alt="Annies Jerk menu and food poster" class="h-full w-full object-cover" />
-            </div>
-            <div class="mt-4 grid grid-cols-2 gap-3">
-              <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-white/65">Known For</p>
-                <p class="mt-2 text-lg font-extrabold text-yellow-300">Fall-off-the-bone flavor</p>
+          <div class="hero-art glass rounded-[1.9rem] p-5 sm:p-6">
+            <div class="grid h-full gap-4 md:grid-rows-[auto_1fr_auto]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.22em] text-white/65">House Favourites</p>
+                  <h3 class="mt-2 text-3xl text-yellow-300">Annie’s Choice</h3>
+                </div>
+                <div class="rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-yellow-200">
+                  MK2 Flavor
+                </div>
               </div>
-              <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-white/65">Local Vibe</p>
-                <p class="mt-2 text-lg font-extrabold text-teal-200">Great banter. Big energy.</p>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="food-card flex flex-col justify-between rounded-[1.4rem] p-5">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-white/60">Signature Plate</p>
+                    <h4 class="mt-2 text-2xl font-extrabold text-white">Jerk Chicken</h4>
+                    <p class="mt-3 text-sm leading-6 text-white/80">
+                      Smoky, bold, and full of Caribbean heat with rice and seasoned veg.
+                    </p>
+                  </div>
+                  <div class="mt-5 flex items-center justify-between">
+                    <span class="rounded-full bg-yellow-400 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-slate-900">Most Popular</span>
+                    <span class="text-lg font-extrabold text-yellow-300">£8.50</span>
+                  </div>
+                </div>
+
+                <div class="food-card flex flex-col justify-between rounded-[1.4rem] p-5">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.2em] text-white/60">Seafood Highlight</p>
+                    <h4 class="mt-2 text-2xl font-extrabold text-white">Seafood Boil</h4>
+                    <p class="mt-3 text-sm leading-6 text-white/80">
+                      The crowd puller. Rich, messy, satisfying, and talked about by customers.
+                    </p>
+                  </div>
+                  <div class="mt-5 flex items-center justify-between">
+                    <span class="rounded-full bg-teal-400 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-slate-900">Standout</span>
+                    <span class="text-lg font-extrabold text-teal-200">£15 / £45</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid gap-3 sm:grid-cols-3">
+                <div class="rounded-2xl bg-white/10 p-4">
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/60">Known For</p>
+                  <p class="mt-2 text-lg font-extrabold text-yellow-300">Fall-off-the-bone flavor</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4">
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/60">The Vibe</p>
+                  <p class="mt-2 text-lg font-extrabold text-teal-200">Warm, personal, lively</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4">
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/60">Ideal For</p>
+                  <p class="mt-2 text-lg font-extrabold text-orange-300">Lunch, dinner, linkups</p>
+                </div>
               </div>
             </div>
           </div>
@@ -200,8 +327,28 @@
         <div class="grid gap-6 md:grid-cols-3">
           <div class="glass rounded-[1.75rem] p-6 md:col-span-2">
             <p class="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">The Annie Factor</p>
-            <h2 class="section-title text-3xl text-white sm:text-4xl">The spot people talk about for the food and the welcome.</h2>
-            <p class="mt-4 max-w-3xl leading-7 text-white/85">Customers keep coming back for the jerk, the seafood boil, and the feeling that Annie actually cares. The food lands with proper Caribbean depth, and the service feels personal instead of scripted.</p>
+            <h2 class="section-title text-3xl text-white sm:text-4xl">
+              The spot people talk about for the food and the welcome.
+            </h2>
+            <p class="mt-4 max-w-3xl leading-7 text-white/85">
+              Customers keep coming back for the jerk, the seafood boil, and the feeling that Annie actually cares. The food lands with proper Caribbean depth, and the service feels personal instead of scripted.
+            </p>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl bg-white/8 p-5">
+                <p class="text-sm font-black uppercase tracking-[0.18em] text-yellow-200">Meet the Chef</p>
+                <p class="mt-3 text-white/85">
+                  “It’s like catching up with a friend.” That’s the energy behind the counter: warm, funny, direct, and proud of the food.
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-white/8 p-5">
+                <p class="text-sm font-black uppercase tracking-[0.18em] text-yellow-200">What Hits Hard</p>
+                <p class="mt-3 text-white/85">
+                  Seafood boil, jerk chicken, oxtail, and wholesome homemade flavor that people compare to grandma-style cooking.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div class="glass rounded-[1.75rem] p-6">
@@ -209,9 +356,9 @@
             <ul class="mt-4 space-y-3 text-sm leading-6 text-white/85">
               <li>• Signature jerk chicken and pork</li>
               <li>• Seafood boil gets special attention from customers</li>
-              <li>• Collection-friendly MVP flow</li>
-              <li>• Uber Eats / Just Eat links ready</li>
-              <li>• WhatsApp feedback option included</li>
+              <li>• Real reviews included below</li>
+              <li>• Click-to-add menu system</li>
+              <li>• Collection and delivery checkout form</li>
             </ul>
           </div>
         </div>
@@ -222,7 +369,18 @@
           <div>
             <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">Menu</p>
             <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">The Full Feast</h2>
-            <p class="mt-3 max-w-2xl text-white/80">Tap any item to add it to the basket. Popular picks are marked as Annie’s Choice.</p>
+            <p class="mt-3 max-w-2xl text-white/80">
+              Click any item to add it to checkout. Popular picks are marked as Annie’s Choice.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="https://www.ubereats.com/" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-4 py-2 font-bold text-white transition hover:border-yellow-300 hover:text-yellow-300">
+              Order on Uber Eats
+            </a>
+            <a href="https://www.just-eat.co.uk/" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-4 py-2 font-bold text-white transition hover:border-yellow-300 hover:text-yellow-300">
+              Order on Just Eat
+            </a>
           </div>
         </div>
 
@@ -230,15 +388,19 @@
           <div class="menu-category rounded-[1.75rem] p-5">
             <div class="mb-4 flex items-center justify-between">
               <h3 class="text-2xl text-yellow-300">Mains</h3>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Rice included</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+                Rice included
+              </span>
             </div>
             <div class="space-y-3" id="mainsList"></div>
           </div>
 
           <div class="menu-category rounded-[1.75rem] p-5">
             <div class="mb-4 flex items-center justify-between">
-              <h3 class="text-2xl text-yellow-300">Seafood, Sides & Extras</h3>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Mix & match</span>
+              <h3 class="text-2xl text-yellow-300">Sides & Extras</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+                Mix & match
+              </span>
             </div>
             <div class="space-y-3" id="sidesList"></div>
           </div>
@@ -246,7 +408,9 @@
           <div class="menu-category rounded-[1.75rem] p-5">
             <div class="mb-4 flex items-center justify-between">
               <h3 class="text-2xl text-yellow-300">Drinks & Cakes</h3>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Tropical sips</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+                Tropical sips
+              </span>
             </div>
             <div class="space-y-3" id="drinksList"></div>
           </div>
@@ -257,7 +421,9 @@
                 <p class="text-sm font-bold uppercase tracking-[0.2em] text-teal-200">Checkout</p>
                 <h3 class="mt-1 text-2xl text-white">Your Order</h3>
               </div>
-              <button id="clearCartBtn" class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/80 hover:border-red-300 hover:text-red-200">Clear</button>
+              <button id="clearCartBtn" class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/80 hover:border-red-300 hover:text-red-200">
+                Clear
+              </button>
             </div>
 
             <div id="cartItems" class="cart-scroll mt-5 max-h-[24rem] space-y-3 overflow-y-auto pr-1"></div>
@@ -287,7 +453,12 @@
                 <option value="Delivery" class="text-slate-900">Delivery</option>
               </select>
               <textarea id="orderNotes" rows="3" placeholder="Notes for Annie (spice level, extras, allergies)" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none"></textarea>
-              <button type="submit" class="w-full rounded-2xl bg-yellow-400 px-4 py-3 text-sm font-extrabold uppercase tracking-[0.16em] text-slate-900 transition hover:brightness-105">Pay & Place Order</button>
+              <button type="submit" class="w-full rounded-2xl bg-yellow-400 px-4 py-3 text-sm font-extrabold uppercase tracking-[0.16em] text-slate-900 transition hover:brightness-105">
+                Pay & Place Order
+              </button>
+              <p class="text-xs leading-5 text-white/60">
+                This is a front-end MVP checkout. For live online payments, connect Stripe or another payment gateway.
+              </p>
             </form>
 
             <div id="checkoutMessage" class="mt-4 hidden rounded-2xl border border-green-400/25 bg-green-400/10 p-4 text-sm text-green-100"></div>
@@ -298,7 +469,9 @@
       <section id="reviews" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div class="mb-8">
           <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">Reviews</p>
-          <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">Real customer energy + add your own review</h2>
+          <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">
+            Real customer reviews + add your own
+          </h2>
         </div>
 
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -309,6 +482,7 @@
           <div class="glass rounded-[1.75rem] p-6">
             <p class="text-sm font-bold uppercase tracking-[0.2em] text-teal-200">Tell Annie what you think</p>
             <h3 class="mt-2 text-2xl text-white">Leave a review</h3>
+
             <form id="reviewForm" class="mt-5 space-y-3">
               <input type="text" id="reviewName" placeholder="Your name" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required>
               <select id="reviewRating" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white focus:border-yellow-300 focus:outline-none">
@@ -319,9 +493,75 @@
                 <option value="1" class="text-slate-900">1 star</option>
               </select>
               <textarea id="reviewText" rows="4" placeholder="What did you order? How was the food and service?" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required></textarea>
-              <button type="submit" class="rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-extrabold uppercase tracking-[0.15em] text-slate-900 transition hover:brightness-105">Post Review</button>
+
+              <div class="flex flex-wrap gap-3">
+                <button type="submit" class="rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-extrabold uppercase tracking-[0.15em] text-slate-900 transition hover:brightness-105">
+                  Post Review
+                </button>
+                <a href="https://wa.me/447727154127?text=Hi%20Annie%2C%20I%20want%20to%20leave%20feedback%20about%20my%20order." target="_blank" rel="noreferrer" class="rounded-2xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:border-teal-300 hover:text-teal-200">
+                  Send via WhatsApp
+                </a>
+              </div>
             </form>
+
             <div id="reviewMessage" class="mt-4 hidden rounded-2xl border border-teal-300/25 bg-teal-300/10 p-4 text-sm text-teal-100"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="glass rounded-[1.75rem] p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-yellow-300">Location & Vibe Check</p>
+            <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">Find Annie in Bletchley</h2>
+
+            <div class="mt-5 space-y-4 text-white/85">
+              <p>
+                <span class="font-bold text-white">Address:</span><br>
+                14 Wetherburn Court<br>
+                Bletchley MK2 2UW<br>
+                Inside Brunel Shopping Centre
+              </p>
+
+              <p>
+                <span class="font-bold text-white">Opening Hours:</span><br>
+                Monday 12–4 pm<br>
+                Tuesday 12–4 pm<br>
+                Wednesday 12–4 pm<br>
+                Thursday 12–7 pm<br>
+                Friday 12–10 pm<br>
+                Saturday 12–10 pm<br>
+                Sunday 12–8 pm
+              </p>
+
+              <p>
+                <span class="font-bold text-white">Atmosphere:</span><br>
+                Rated 5/5 by locals for food, energy, and hospitality.
+              </p>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="tel:07727154127" class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-extrabold text-slate-900">
+                Call 07727 154127
+              </a>
+
+              <a href="https://maps.google.com/?q=14+Wetherburn+Court+Bletchley+MK2+2UW" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:border-teal-300 hover:text-teal-200">
+                Open in Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="glass rounded-[1.75rem] p-3">
+            <div class="overflow-hidden rounded-[1.4rem] border border-white/10">
+              <iframe
+                title="Google Map to Annies Jerk"
+                src="https://www.google.com/maps?q=14%20Wetherburn%20Court%2C%20Bletchley%2C%20MK2%202UW&output=embed"
+                width="100%"
+                height="420"
+                style="border:0;"
+                loading="lazy">
+              </iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -407,12 +647,13 @@
     function renderMenuItems(containerId, items) {
       const container = document.getElementById(containerId);
       if (!container) return;
+
       container.innerHTML = "";
 
       items.forEach((item) => {
         const row = document.createElement("button");
         row.type = "button";
-        row.className = "menu-item w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition";
+        row.className = "menu-item w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-left";
 
         const badgeHtml = item.choice
           ? `<span class="badge-choice rounded-full px-2.5 py-1 text-[10px] uppercase tracking-[0.18em]">Annie's Choice</span>`
@@ -453,10 +694,12 @@
       const item = cart.find((entry) => entry.name === name);
       if (!item) return;
       item.quantity += delta;
+
       if (item.quantity <= 0) {
         const index = cart.findIndex((entry) => entry.name === name);
         cart.splice(index, 1);
       }
+
       renderCart();
     }
 
@@ -465,11 +708,16 @@
       cartItems.innerHTML = "";
 
       if (!cart.length) {
-        cartItems.innerHTML = '<div class="rounded-2xl border border-dashed border-white/15 bg-white/5 p-4 text-sm text-white/60">Your basket is empty. Tap menu items to start your order.</div>';
+        cartItems.innerHTML = `
+          <div class="rounded-2xl border border-dashed border-white/15 bg-white/5 p-4 text-sm text-white/60">
+            Your basket is empty. Tap menu items to start your order.
+          </div>
+        `;
       } else {
         cart.forEach((item) => {
           const row = document.createElement("div");
           row.className = "rounded-2xl border border-white/10 bg-white/5 p-4";
+
           row.innerHTML = `
             <div class="flex items-start justify-between gap-3">
               <div>
@@ -486,6 +734,7 @@
               </div>
             </div>
           `;
+
           cartItems.appendChild(row);
         });
       }
@@ -514,6 +763,7 @@
       reviews.forEach((review) => {
         const card = document.createElement("article");
         card.className = "review-card rounded-[1.5rem] p-5";
+
         card.innerHTML = `
           <div class="flex items-center justify-between gap-3">
             <p class="font-extrabold text-white">${review.name}</p>
@@ -522,6 +772,7 @@
           <p class="mt-3 leading-7 text-white/80">${review.text}</p>
           ${review.meta ? `<p class="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/50">${review.meta}</p>` : ""}
         `;
+
         reviewsList.appendChild(card);
       });
     }
@@ -531,43 +782,52 @@
       const day = now.getDay();
       const hour = now.getHours();
       const minute = now.getMinutes();
-      const statusEl = document.getElementById("kitchenStatus");
-
-      const openingHours = {
-  0: { open: 12, close: 20 }, // Sunday
-  1: { open: 12, close: 16 }, // Monday
-  2: { open: 12, close: 16 }, // Tuesday
-  3: { open: 12, close: 16 }, // Wednesday
-  4: { open: 12, close: 19 }, // Thursday
-  5: { open: 12, close: 22 }, // Friday
-  6: { open: 12, close: 22 }  // Saturday
-};
-    
-
-      const today = openingHours[day];
       const currentDecimal = hour + minute / 60;
 
+      const openingHours = {
+        0: { open: 12, close: 20 }, // Sunday
+        1: { open: 12, close: 16 }, // Monday
+        2: { open: 12, close: 16 }, // Tuesday
+        3: { open: 12, close: 16 }, // Wednesday
+        4: { open: 12, close: 19 }, // Thursday
+        5: { open: 12, close: 22 }, // Friday
+        6: { open: 12, close: 22 }  // Saturday
+      };
+
+      const dayNames = {
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday"
+      };
+
+      const statusEl = document.getElementById("kitchenStatus");
+      const today = openingHours[day];
+
       if (today && currentDecimal >= today.open && currentDecimal < today.close) {
-        statusEl.textContent = "🟢 We’re Cooking! Order now for collection.";
+        statusEl.textContent = "🟢 We’re Open Now";
         statusEl.className = "status-open rounded-full px-5 py-3 text-sm font-extrabold";
         return;
       }
 
-      let nextOpenText = "Thursday at 12:00";
-      const dayNames = { 0: "Sunday", 4: "Thursday", 5: "Friday", 6: "Saturday" };
+      let nextOpenText = "tomorrow at 12:00";
 
       for (let i = 0; i < 7; i++) {
         const futureDay = (day + i) % 7;
-        if (openingHours[futureDay]) {
-          const info = openingHours[futureDay];
-          if (i > 0 || currentDecimal < info.open) {
-            nextOpenText = `${dayNames[futureDay]} at ${String(info.open).padStart(2, "0")}:00`;
-            break;
-          }
+        const info = openingHours[futureDay];
+
+        if (!info) continue;
+
+        if (i > 0 || currentDecimal < info.open) {
+          nextOpenText = `${dayNames[futureDay]} at ${String(info.open).padStart(2, "0")}:00`;
+          break;
         }
       }
 
-      statusEl.textContent = `🔴 Kitchen's Closed. See you ${nextOpenText}.`;
+      statusEl.textContent = `🔴 Closed Now • Reopens ${nextOpenText}`;
       statusEl.className = "status-closed rounded-full px-5 py-3 text-sm font-extrabold";
     }
 
@@ -579,12 +839,20 @@
 
     document.getElementById("reviewForm").addEventListener("submit", (event) => {
       event.preventDefault();
+
       const name = document.getElementById("reviewName").value.trim();
       const rating = Number(document.getElementById("reviewRating").value);
       const text = document.getElementById("reviewText").value.trim();
+
       if (!name || !text) return;
 
-      reviews.unshift({ name, rating, text, meta: "Website review" });
+      reviews.unshift({
+        name,
+        rating,
+        text,
+        meta: "Website review"
+      });
+
       renderReviews();
       document.getElementById("reviewForm").reset();
 
@@ -596,10 +864,13 @@
     document.getElementById("checkoutForm").addEventListener("submit", (event) => {
       event.preventDefault();
 
+      const message = document.getElementById("checkoutMessage");
+
       if (!cart.length) {
-        const message = document.getElementById("checkoutMessage");
         message.textContent = "Add at least one item before checking out.";
         message.classList.remove("hidden");
+        message.classList.remove("border-green-400/25", "bg-green-400/10", "text-green-100");
+        message.classList.add("border-red-400/25", "bg-red-400/10", "text-red-100");
         return;
       }
 
@@ -610,9 +881,16 @@
       const totalText = document.getElementById("total").textContent;
       const summary = cart.map((item) => `${item.quantity}x ${item.name}`).join(", ");
 
-      const message = document.getElementById("checkoutMessage");
-      message.classList.remove("hidden");
-      message.innerHTML = `<strong>Order simulated successfully.</strong><br>${name}, your ${orderType.toLowerCase()} order has been prepared in this MVP flow.<br><span class="text-green-200/90">Items:</span> ${summary}<br><span class="text-green-200/90">Phone:</span> ${phone}<br><span class="text-green-200/90">Total:</span> ${totalText}${notes ? `<br><span class="text-green-200/90">Notes:</span> ${notes}` : ""}`;
+      message.classList.remove("hidden", "border-red-400/25", "bg-red-400/10", "text-red-100");
+      message.classList.add("border-green-400/25", "bg-green-400/10", "text-green-100");
+      message.innerHTML = `
+        <strong>Order simulated successfully.</strong><br>
+        ${name}, your ${orderType.toLowerCase()} order has been prepared in this MVP flow.<br>
+        <span class="text-green-200/90">Items:</span> ${summary}<br>
+        <span class="text-green-200/90">Phone:</span> ${phone}<br>
+        <span class="text-green-200/90">Total:</span> ${totalText}
+        ${notes ? `<br><span class="text-green-200/90">Notes:</span> ${notes}` : ""}
+      `;
     });
 
     renderMenuItems("mainsList", menu.mains);
@@ -621,83 +899,6 @@
     renderCart();
     renderReviews();
     updateKitchenStatus();
-    <section id="location" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-  <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-
-    <div class="glass rounded-[1.75rem] p-6">
-
-      <p class="text-sm font-bold uppercase tracking-[0.2em] text-yellow-300">
-        Location & Vibe Check
-      </p>
-
-      <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">
-        Find Annie in Bletchley
-      </h2>
-
-      <div class="mt-5 space-y-4 text-white/85">
-
-        <p>
-          <span class="font-bold text-white">Address:</span><br>
-          14 Wetherburn Court<br>
-          Bletchley MK2 2UW<br>
-          Inside Brunel Shopping Centre
-        </p>
-
-        <p>
-          <span class="font-bold text-white">Opening Hours:</span><br>
-          Monday 12–4 pm<br>
-          Tuesday 12–4 pm<br>
-          Wednesday 12–4 pm<br>
-          Thursday 12–7 pm<br>
-          Friday 12–10 pm<br>
-          Saturday 12–10 pm<br>
-          Sunday 12–8 pm
-        </p>
-
-        <p>
-          <span class="font-bold text-white">Atmosphere:</span><br>
-          Rated 5/5 by locals for food, energy, and hospitality.
-        </p>
-
-      </div>
-
-      <div class="mt-6 flex flex-wrap gap-3">
-
-        <a href="tel:07727154127"
-           class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-extrabold text-slate-900">
-          Call 07727 154127
-        </a>
-
-        <a href="https://maps.google.com/?q=14+Wetherburn+Court+Bletchley+MK2+2UW"
-           target="_blank"
-           rel="noreferrer"
-           class="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:border-teal-300 hover:text-teal-200">
-          Open in Google Maps
-        </a>
-
-      </div>
-
-    </div>
-
-    <div class="glass rounded-[1.75rem] p-3">
-
-      <div class="overflow-hidden rounded-[1.4rem] border border-white/10">
-
-        <iframe
-          title="Google Map to Annies Jerk"
-          src="https://www.google.com/maps?q=14%20Wetherburn%20Court%2C%20Bletchley%2C%20MK2%202UW&output=embed"
-          width="100%"
-          height="420"
-          style="border:0;"
-          loading="lazy">
-        </iframe>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
   </script>
 </body>
 </html>
