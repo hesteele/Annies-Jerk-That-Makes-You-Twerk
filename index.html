@@ -534,11 +534,15 @@
       const statusEl = document.getElementById("kitchenStatus");
 
       const openingHours = {
-        4: { open: 12, close: 19 },
-        5: { open: 12, close: 22 },
-        6: { open: 12, close: 22 },
-        0: { open: 12, close: 19 }
-      };
+  0: { open: 12, close: 20 }, // Sunday
+  1: { open: 12, close: 16 }, // Monday
+  2: { open: 12, close: 16 }, // Tuesday
+  3: { open: 12, close: 16 }, // Wednesday
+  4: { open: 12, close: 19 }, // Thursday
+  5: { open: 12, close: 22 }, // Friday
+  6: { open: 12, close: 22 }  // Saturday
+};
+    
 
       const today = openingHours[day];
       const currentDecimal = hour + minute / 60;
@@ -617,6 +621,83 @@
     renderCart();
     renderReviews();
     updateKitchenStatus();
+    <section id="location" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+
+    <div class="glass rounded-[1.75rem] p-6">
+
+      <p class="text-sm font-bold uppercase tracking-[0.2em] text-yellow-300">
+        Location & Vibe Check
+      </p>
+
+      <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">
+        Find Annie in Bletchley
+      </h2>
+
+      <div class="mt-5 space-y-4 text-white/85">
+
+        <p>
+          <span class="font-bold text-white">Address:</span><br>
+          14 Wetherburn Court<br>
+          Bletchley MK2 2UW<br>
+          Inside Brunel Shopping Centre
+        </p>
+
+        <p>
+          <span class="font-bold text-white">Opening Hours:</span><br>
+          Monday 12–4 pm<br>
+          Tuesday 12–4 pm<br>
+          Wednesday 12–4 pm<br>
+          Thursday 12–7 pm<br>
+          Friday 12–10 pm<br>
+          Saturday 12–10 pm<br>
+          Sunday 12–8 pm
+        </p>
+
+        <p>
+          <span class="font-bold text-white">Atmosphere:</span><br>
+          Rated 5/5 by locals for food, energy, and hospitality.
+        </p>
+
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+
+        <a href="tel:07727154127"
+           class="rounded-full bg-yellow-400 px-5 py-3 text-sm font-extrabold text-slate-900">
+          Call 07727 154127
+        </a>
+
+        <a href="https://maps.google.com/?q=14+Wetherburn+Court+Bletchley+MK2+2UW"
+           target="_blank"
+           rel="noreferrer"
+           class="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:border-teal-300 hover:text-teal-200">
+          Open in Google Maps
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="glass rounded-[1.75rem] p-3">
+
+      <div class="overflow-hidden rounded-[1.4rem] border border-white/10">
+
+        <iframe
+          title="Google Map to Annies Jerk"
+          src="https://www.google.com/maps?q=14%20Wetherburn%20Court%2C%20Bletchley%2C%20MK2%202UW&output=embed"
+          width="100%"
+          height="420"
+          style="border:0;"
+          loading="lazy">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
   </script>
 </body>
 </html>
