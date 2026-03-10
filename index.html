@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annies Jerk | Caribbean Food Bletchley</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #0b3d2e;
+      --forest-2: #0f5138;
+      --teal: #12b5a5;
+      --yellow: #facc15;
+      --orange: #ff7b22;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(250, 204, 21, 0.14), transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(18, 181, 165, 0.16), transparent 18%),
+        radial-gradient(circle at 80% 70%, rgba(255, 123, 34, 0.15), transparent 24%),
+        radial-gradient(circle at 25% 80%, rgba(255, 255, 255, 0.05), transparent 16%),
+        linear-gradient(135deg, #05291e 0%, #0b3d2e 30%, #0f5138 62%, #083827 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
+      z-index: 0;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: 'Bungee', cursive;
+      letter-spacing: 0.02em;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
+    }
+
+    .glow-button {
+      box-shadow: 0 0 0 rgba(250, 204, 21, 0.6);
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.45); }
+      70% { box-shadow: 0 0 0 14px rgba(250, 204, 21, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+    }
+
+    .section-title {
+      text-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    }
+
+    .price-pill {
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      color: #fff5b8;
+    }
+
+    .menu-category {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.045));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .menu-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(250,204,21,0.4);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .badge-choice {
+      background: linear-gradient(90deg, var(--yellow), #ffd95a);
+      color: #111827;
+      font-weight: 800;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.38)),
+        radial-gradient(circle at top right, rgba(18,181,165,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(250,204,21,0.18), transparent 24%);
+    }
+
+    .review-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .floating-leaf {
+      position: absolute;
+      opacity: 0.12;
+      font-size: 6rem;
+      filter: blur(0.4px);
+      pointer-events: none;
+    }
+
+    .status-open { background: #16a34a; color: white; }
+    .status-closed { background: #dc2626; color: white; }
+
+    .cart-scroll::-webkit-scrollbar { width: 8px; }
+    .cart-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="relative z-10">
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#062419]/85 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xl font-black">AJ</div>
+          <div>
+            <p class="brand-font text-lg leading-none text-yellow-300">Annies Jerk</p>
+            <p class="text-xs uppercase tracking-[0.22em] text-white/70">That Makes You Twerk</p>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 text-sm font-semibold text-white/85 md:flex">
+          <a href="#about" class="hover:text-yellow-300">About</a>
+          <a href="#menu" class="hover:text-yellow-300">Menu</a>
+          <a href="#reviews" class="hover:text-yellow-300">Reviews</a>
+          <a href="#location" class="hover:text-yellow-300">Location</a>
+          <a href="#checkout" class="hover:text-yellow-300">Checkout</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" class="rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-yellow-300 hover:text-yellow-300">TikTok</a>
+          <a href="#checkout" class="glow-button rounded-full bg-yellow-400 px-4 py-2 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">Order Collection</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="relative isolate overflow-hidden px-4 pb-14 pt-8 sm:px-6 lg:px-8 lg:pb-20 lg:pt-14">
+        <span class="floating-leaf left-[4%] top-16">🍃</span>
+        <span class="floating-leaf right-[7%] top-36">🌶️</span>
+        <span class="floating-leaf bottom-8 right-[24%]">🥭</span>
+
+        <div class="hero-overlay mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-white/10 p-6 shadow-2xl shadow-black/30 md:grid-cols-[1.15fr_0.85fr] md:p-10 lg:p-14">
+          <div class="flex flex-col justify-center">
+            <p class="mb-4 inline-flex w-fit items-center rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-yellow-200">Best Jerk Chicken Bletchley • Seafood Boil Milton Keynes</p>
+            <h1 class="section-title max-w-3xl text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">Food So Good, It Makes You Twerk.</h1>
+            <p class="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">Real Caribbean flavors. Real Bletchley soul. Big plates, bold seasoning, and the kind of hospitality that feels like catching up with a friend.</p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span id="kitchenStatus" class="rounded-full px-5 py-3 text-sm font-extrabold">Checking kitchen status...</span>
+              <span class="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white/90">Inside Brunel Shopping Centre</span>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#menu" class="rounded-full bg-yellow-400 px-6 py-3 text-sm font-extrabold text-slate-900 transition hover:scale-[1.02]">See Menu</a>
+              <a href="#reviews" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-yellow-300 hover:text-yellow-300">See Reviews</a>
+              <a href="tel:07727154127" class="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:border-teal-300 hover:text-teal-200">Call Now</a>
+            </div>
+          </div>
+
+          <div class="glass rounded-[1.75rem] p-4 sm:p-5">
+            <div class="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/15">
+              <img src="menu-poster.png" alt="Annies Jerk menu and food poster" class="h-full w-full object-cover" />
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white/10 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/65">Known For</p>
+                <p class="mt-2 text-lg font-extrabold text-yellow-300">Fall-off-the-bone flavor</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/65">Local Vibe</p>
+                <p class="mt-2 text-lg font-extrabold text-teal-200">Great banter. Big energy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="glass rounded-[1.75rem] p-6 md:col-span-2">
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">The Annie Factor</p>
+            <h2 class="section-title text-3xl text-white sm:text-4xl">The spot people talk about for the food and the welcome.</h2>
+            <p class="mt-4 max-w-3xl leading-7 text-white/85">Customers keep coming back for the jerk, the seafood boil, and the feeling that Annie actually cares. The food lands with proper Caribbean depth, and the service feels personal instead of scripted.</p>
+          </div>
+
+          <div class="glass rounded-[1.75rem] p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-teal-200">Quick Highlights</p>
+            <ul class="mt-4 space-y-3 text-sm leading-6 text-white/85">
+              <li>• Signature jerk chicken and pork</li>
+              <li>• Seafood boil gets special attention from customers</li>
+              <li>• Collection-friendly MVP flow</li>
+              <li>• Uber Eats / Just Eat links ready</li>
+              <li>• WhatsApp feedback option included</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div class="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">Menu</p>
+            <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">The Full Feast</h2>
+            <p class="mt-3 max-w-2xl text-white/80">Tap any item to add it to the basket. Popular picks are marked as Annie’s Choice.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr_1fr_0.95fr]">
+          <div class="menu-category rounded-[1.75rem] p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="text-2xl text-yellow-300">Mains</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Rice included</span>
+            </div>
+            <div class="space-y-3" id="mainsList"></div>
+          </div>
+
+          <div class="menu-category rounded-[1.75rem] p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="text-2xl text-yellow-300">Seafood, Sides & Extras</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Mix & match</span>
+            </div>
+            <div class="space-y-3" id="sidesList"></div>
+          </div>
+
+          <div class="menu-category rounded-[1.75rem] p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="text-2xl text-yellow-300">Drinks & Cakes</h3>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white/70">Tropical sips</span>
+            </div>
+            <div class="space-y-3" id="drinksList"></div>
+          </div>
+
+          <aside id="checkout" class="glass rounded-[1.75rem] p-5">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.2em] text-teal-200">Checkout</p>
+                <h3 class="mt-1 text-2xl text-white">Your Order</h3>
+              </div>
+              <button id="clearCartBtn" class="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/80 hover:border-red-300 hover:text-red-200">Clear</button>
+            </div>
+
+            <div id="cartItems" class="cart-scroll mt-5 max-h-[24rem] space-y-3 overflow-y-auto pr-1"></div>
+
+            <div class="mt-5 rounded-2xl border border-white/10 bg-black/10 p-4">
+              <div class="flex items-center justify-between text-sm text-white/80">
+                <span>Subtotal</span>
+                <span id="subtotal">£0.00</span>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-sm text-white/80">
+                <span>Service</span>
+                <span id="serviceFee">£0.00</span>
+              </div>
+              <div class="mt-3 border-t border-white/10 pt-3">
+                <div class="flex items-center justify-between text-lg font-extrabold text-white">
+                  <span>Total</span>
+                  <span id="total">£0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="checkoutForm" class="mt-5 space-y-3">
+              <input type="text" id="customerName" placeholder="Your name" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required>
+              <input type="tel" id="customerPhone" placeholder="Phone number" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required>
+              <select id="orderType" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white focus:border-yellow-300 focus:outline-none">
+                <option value="Collection" class="text-slate-900">Collection</option>
+                <option value="Delivery" class="text-slate-900">Delivery</option>
+              </select>
+              <textarea id="orderNotes" rows="3" placeholder="Notes for Annie (spice level, extras, allergies)" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none"></textarea>
+              <button type="submit" class="w-full rounded-2xl bg-yellow-400 px-4 py-3 text-sm font-extrabold uppercase tracking-[0.16em] text-slate-900 transition hover:brightness-105">Pay & Place Order</button>
+            </form>
+
+            <div id="checkoutMessage" class="mt-4 hidden rounded-2xl border border-green-400/25 bg-green-400/10 p-4 text-sm text-green-100"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="reviews" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div class="mb-8">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-yellow-300">Reviews</p>
+          <h2 class="section-title mt-2 text-3xl text-white sm:text-4xl">Real customer energy + add your own review</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <div id="reviewsList" class="grid gap-4 md:grid-cols-2"></div>
+          </div>
+
+          <div class="glass rounded-[1.75rem] p-6">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-teal-200">Tell Annie what you think</p>
+            <h3 class="mt-2 text-2xl text-white">Leave a review</h3>
+            <form id="reviewForm" class="mt-5 space-y-3">
+              <input type="text" id="reviewName" placeholder="Your name" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required>
+              <select id="reviewRating" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white focus:border-yellow-300 focus:outline-none">
+                <option value="5" class="text-slate-900">5 stars</option>
+                <option value="4" class="text-slate-900">4 stars</option>
+                <option value="3" class="text-slate-900">3 stars</option>
+                <option value="2" class="text-slate-900">2 stars</option>
+                <option value="1" class="text-slate-900">1 star</option>
+              </select>
+              <textarea id="reviewText" rows="4" placeholder="What did you order? How was the food and service?" class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-yellow-300 focus:outline-none" required></textarea>
+              <button type="submit" class="rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-extrabold uppercase tracking-[0.15em] text-slate-900 transition hover:brightness-105">Post Review</button>
+            </form>
+            <div id="reviewMessage" class="mt-4 hidden rounded-2xl border border-teal-300/25 bg-teal-300/10 p-4 text-sm text-teal-100"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const menu = {
+      mains: [
+        { name: "Jerk Chicken", price: 8.5, description: "Rice included, seasoned veg.", choice: true },
+        { name: "Brown Stew Chicken", price: 8.5, description: "Rice included, seasoned veg." },
+        { name: "Curry Chicken", price: 8.5, description: "Rice included, seasoned veg." },
+        { name: "Fried Chicken", price: 8.5, description: "Rice included, seasoned veg." },
+        { name: "Jerk Pork", price: 9.5, description: "Rice included, seasoned veg." },
+        { name: "Brown Stew Pork", price: 9.5, description: "Rice included, seasoned veg." },
+        { name: "Sticky BBQ Ribs", price: 9.5, description: "Rice included, seasoned veg." },
+        { name: "Curry Goat", price: 13, description: "Rich Caribbean curry." },
+        { name: "Oxtail", price: 13, description: "Slow-cooked, deeply seasoned.", choice: true },
+        { name: "Veggie Curry", price: 10, description: "Plant-based option." },
+        { name: "Prawn Curry", price: 10, description: "Seafood curry with island spice." },
+        { name: "Fried Fish", price: 10, description: "Crisp fried fish." },
+        { name: "Brown Stew Fish", price: 10, description: "Stewed fish in rich sauce." },
+        { name: "Seafood Boil Small", price: 15, description: "Highly recommended by customers.", choice: true },
+        { name: "Seafood Boil Large", price: 45, description: "Subject to preorder." }
+      ],
+      sides: [
+        { name: "Coleslaw / Potato Salad", price: 1.5, description: "Fresh and cooling." },
+        { name: "Fried Dumplings", price: 2.5, description: "Golden and soft." },
+        { name: "Plantain", price: 2.5, description: "Sweet fried plantain.", choice: true },
+        { name: "Patties", price: 3.5, description: "Flaky pastry pockets." },
+        { name: "Fritters", price: 2.5, description: "Savory fried bites." },
+        { name: "Rice & Peas", price: 3, description: "Classic side." },
+        { name: "Fried Rice (Reg)", price: 3, description: "Regular fried rice." },
+        { name: "Fried Rice (Shrimp)", price: 5, description: "Shrimp fried rice." },
+        { name: "Mac & Cheese", price: 4, description: "Comfort side." },
+        { name: "Pick & Mix", price: 6, description: "Mixed side selection." },
+        { name: "Rasta Pasta", price: 8, description: "Creamy and spiced." },
+        { name: "Chow Mein", price: 8, description: "Caribbean-style noodles." },
+        { name: "Small Soup", price: 4.5, description: "Hot and hearty." },
+        { name: "Large Soup", price: 6, description: "Bigger bowl." }
+      ],
+      drinks: [
+        { name: "Water", price: 1, description: "Still water." },
+        { name: "KA / Rubicon / Rio", price: 1.5, description: "Soft drinks selection." },
+        { name: "Sorrel Juice", price: 3, description: "Caribbean classic.", choice: true },
+        { name: "Supermalt", price: 2.5, description: "Malt drink." },
+        { name: "Peanut Punch", price: 2.5, description: "Rich and sweet." },
+        { name: "Coconut Water", price: 3, description: "Refreshing tropical drink." },
+        { name: "Bigga", price: 3, description: "Jamaican soda." },
+        { name: "Ginger Tea", price: 1.5, description: "Warm and sharp." },
+        { name: "Guinness Punch", price: 4, description: "Sold in store only." },
+        { name: "Sky Juice", price: 4, description: "Tropical creamy drink." },
+        { name: "Annie's Cakes", price: 3.5, description: "Per slice." }
+      ]
+    };
+
+    const starterReviews = [
+      {
+        name: "Seafood Boil Customer",
+        rating: 5,
+        text: "I wish I could give this more then 5*s, me and a pal went for seafood boil, we loved the vibe and the atmosphere, the lady that runs the place took time to be accommodating and speak to us not just about the food but life it was great. It was like catching up with a friend! The service was incredible, the food was incredible. I recommend everyone should eat here! One things for sure and it’s that me and my friends will be back for more!",
+        meta: "Dine in • Dinner • £50–60 pp • Food: 5 • Service: 5 • Atmosphere: 5"
+      },
+      {
+        name: "Coventry Work Group",
+        rating: 5,
+        text: "At work once a month we travel from Coventry to this hidden little gem in Milton Keynes. For 12 meals only £150 we think is great value for money for the food receive and the flavours, reminds me of grandma style cooking very wholesome and made with love. Unfortunately there was not enough time to take pictures of the food as it was devoured as soon as it arrived back. Keep doing what you’re doing Annie, you’re smashing it.",
+        meta: "Lunch • £10–20 pp • Food: 5 • Service: 5 • Atmosphere: 5"
+      }
+    ];
+
+    const cart = [];
+    const reviews = [...starterReviews];
+
+    function formatPrice(value) {
+      return `£${value.toFixed(2)}`;
+    }
+
+    function starString(rating) {
+      return "★".repeat(rating) + "☆".repeat(5 - rating);
+    }
+
+    function renderMenuItems(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = "";
+
+      items.forEach((item) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "menu-item w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition";
+
+        const badgeHtml = item.choice
+          ? `<span class="badge-choice rounded-full px-2.5 py-1 text-[10px] uppercase tracking-[0.18em]">Annie's Choice</span>`
+          : "";
+
+        row.innerHTML = `
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <p class="font-extrabold text-white">${item.name}</p>
+                ${badgeHtml}
+              </div>
+              <p class="mt-1 text-sm leading-6 text-white/65">${item.description}</p>
+            </div>
+            <div class="flex flex-col items-end gap-2">
+              <span class="price-pill rounded-full px-3 py-1 text-sm font-bold">${formatPrice(item.price)}</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white/70">Add</span>
+            </div>
+          </div>
+        `;
+
+        row.addEventListener("click", () => addToCart(item));
+        container.appendChild(row);
+      });
+    }
+
+    function addToCart(item) {
+      const existing = cart.find((entry) => entry.name === item.name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+      renderCart();
+    }
+
+    function changeQuantity(name, delta) {
+      const item = cart.find((entry) => entry.name === name);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        const index = cart.findIndex((entry) => entry.name === name);
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById("cartItems");
+      cartItems.innerHTML = "";
+
+      if (!cart.length) {
+        cartItems.innerHTML = '<div class="rounded-2xl border border-dashed border-white/15 bg-white/5 p-4 text-sm text-white/60">Your basket is empty. Tap menu items to start your order.</div>';
+      } else {
+        cart.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "rounded-2xl border border-white/10 bg-white/5 p-4";
+          row.innerHTML = `
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="font-bold text-white">${item.name}</p>
+                <p class="mt-1 text-sm text-white/60">${formatPrice(item.price)} each</p>
+              </div>
+              <div class="text-right">
+                <p class="font-extrabold text-yellow-300">${formatPrice(item.price * item.quantity)}</p>
+                <div class="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-2 py-1">
+                  <button type="button" class="h-7 w-7 rounded-full bg-white/10 font-black text-white" data-action="decrease" data-name="${item.name}">−</button>
+                  <span class="min-w-6 text-center text-sm font-bold text-white">${item.quantity}</span>
+                  <button type="button" class="h-7 w-7 rounded-full bg-white/10 font-black text-white" data-action="increase" data-name="${item.name}">+</button>
+                </div>
+              </div>
+            </div>
+          `;
+          cartItems.appendChild(row);
+        });
+      }
+
+      cartItems.querySelectorAll("button[data-action]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const name = btn.getAttribute("data-name");
+          const action = btn.getAttribute("data-action");
+          changeQuantity(name, action === "increase" ? 1 : -1);
+        });
+      });
+
+      const subtotalValue = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const service = subtotalValue > 0 ? 1.5 : 0;
+      const totalValue = subtotalValue + service;
+
+      document.getElementById("subtotal").textContent = formatPrice(subtotalValue);
+      document.getElementById("serviceFee").textContent = formatPrice(service);
+      document.getElementById("total").textContent = formatPrice(totalValue);
+    }
+
+    function renderReviews() {
+      const reviewsList = document.getElementById("reviewsList");
+      reviewsList.innerHTML = "";
+
+      reviews.forEach((review) => {
+        const card = document.createElement("article");
+        card.className = "review-card rounded-[1.5rem] p-5";
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-3">
+            <p class="font-extrabold text-white">${review.name}</p>
+            <span class="text-sm font-black tracking-[0.12em] text-yellow-300">${starString(review.rating)}</span>
+          </div>
+          <p class="mt-3 leading-7 text-white/80">${review.text}</p>
+          ${review.meta ? `<p class="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/50">${review.meta}</p>` : ""}
+        `;
+        reviewsList.appendChild(card);
+      });
+    }
+
+    function updateKitchenStatus() {
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours();
+      const minute = now.getMinutes();
+      const statusEl = document.getElementById("kitchenStatus");
+
+      const openingHours = {
+        4: { open: 12, close: 19 },
+        5: { open: 12, close: 22 },
+        6: { open: 12, close: 22 },
+        0: { open: 12, close: 19 }
+      };
+
+      const today = openingHours[day];
+      const currentDecimal = hour + minute / 60;
+
+      if (today && currentDecimal >= today.open && currentDecimal < today.close) {
+        statusEl.textContent = "🟢 We’re Cooking! Order now for collection.";
+        statusEl.className = "status-open rounded-full px-5 py-3 text-sm font-extrabold";
+        return;
+      }
+
+      let nextOpenText = "Thursday at 12:00";
+      const dayNames = { 0: "Sunday", 4: "Thursday", 5: "Friday", 6: "Saturday" };
+
+      for (let i = 0; i < 7; i++) {
+        const futureDay = (day + i) % 7;
+        if (openingHours[futureDay]) {
+          const info = openingHours[futureDay];
+          if (i > 0 || currentDecimal < info.open) {
+            nextOpenText = `${dayNames[futureDay]} at ${String(info.open).padStart(2, "0")}:00`;
+            break;
+          }
+        }
+      }
+
+      statusEl.textContent = `🔴 Kitchen's Closed. See you ${nextOpenText}.`;
+      statusEl.className = "status-closed rounded-full px-5 py-3 text-sm font-extrabold";
+    }
+
+    document.getElementById("clearCartBtn").addEventListener("click", () => {
+      cart.length = 0;
+      renderCart();
+      document.getElementById("checkoutMessage").classList.add("hidden");
+    });
+
+    document.getElementById("reviewForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("reviewName").value.trim();
+      const rating = Number(document.getElementById("reviewRating").value);
+      const text = document.getElementById("reviewText").value.trim();
+      if (!name || !text) return;
+
+      reviews.unshift({ name, rating, text, meta: "Website review" });
+      renderReviews();
+      document.getElementById("reviewForm").reset();
+
+      const message = document.getElementById("reviewMessage");
+      message.textContent = "Your review was added to the page.";
+      message.classList.remove("hidden");
+    });
+
+    document.getElementById("checkoutForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!cart.length) {
+        const message = document.getElementById("checkoutMessage");
+        message.textContent = "Add at least one item before checking out.";
+        message.classList.remove("hidden");
+        return;
+      }
+
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const orderType = document.getElementById("orderType").value;
+      const notes = document.getElementById("orderNotes").value.trim();
+      const totalText = document.getElementById("total").textContent;
+      const summary = cart.map((item) => `${item.quantity}x ${item.name}`).join(", ");
+
+      const message = document.getElementById("checkoutMessage");
+      message.classList.remove("hidden");
+      message.innerHTML = `<strong>Order simulated successfully.</strong><br>${name}, your ${orderType.toLowerCase()} order has been prepared in this MVP flow.<br><span class="text-green-200/90">Items:</span> ${summary}<br><span class="text-green-200/90">Phone:</span> ${phone}<br><span class="text-green-200/90">Total:</span> ${totalText}${notes ? `<br><span class="text-green-200/90">Notes:</span> ${notes}` : ""}`;
+    });
+
+    renderMenuItems("mainsList", menu.mains);
+    renderMenuItems("sidesList", menu.sides);
+    renderMenuItems("drinksList", menu.drinks);
+    renderCart();
+    renderReviews();
+    updateKitchenStatus();
+  </script>
+</body>
+</html>
